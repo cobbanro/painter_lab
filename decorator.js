@@ -1,5 +1,6 @@
 const Decorator = function(){
   this.stock = [];
+  this.paintingStatus = false;
 };
 
   Decorator.prototype.addACanOfPaint = function (can) {
@@ -13,5 +14,20 @@ const Decorator = function(){
     }
     return t
   }
+
+  Decorator.prototype.canPaint = function(room) {
+    const surfaceArea = room.area*5;
+    if (surfaceArea <= this.stock.litreT()){
+      return true
+    }
+    return false
+  };
+
+  Decorator.prototype.enoughPaint = function(){
+    if (this.stock.canPaint(room)){
+      this.paintingStatus = true;
+      return this.paintingStatus;
+    }
+  };
 
 module.exports = Decorator;
